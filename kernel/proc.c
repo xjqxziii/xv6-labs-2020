@@ -295,6 +295,9 @@ fork(void)
 
   np->state = RUNNABLE;
 
+  // 感觉这里不需要复制，因为trace调用的是exec
+  np->trace_mark = p -> trace_mark;
+
   release(&np->lock);
 
   return pid;
